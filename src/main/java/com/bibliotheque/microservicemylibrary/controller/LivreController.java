@@ -24,7 +24,9 @@ public class LivreController {
     @GetMapping(value = "/livres")
     public List<Livre> ListeDeLivres(){
 
-        return livreDao.findAll();
+        List<Livre>livres = livreDao.findAll();
+
+        return livres;
     }
 
     @GetMapping(value = "/livre/{id}")
