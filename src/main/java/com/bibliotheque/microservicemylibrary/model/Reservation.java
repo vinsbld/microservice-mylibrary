@@ -1,5 +1,7 @@
 package com.bibliotheque.microservicemylibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -19,6 +21,7 @@ public class Reservation {
     @NotNull
     private boolean prolongerPret;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Copie copie;

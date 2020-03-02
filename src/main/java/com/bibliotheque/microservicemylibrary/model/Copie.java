@@ -18,12 +18,12 @@ public class Copie {
     private Integer nbCopies;
 
 
-    //@JsonBackReference
+    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Livre livre;
 
-    //@JsonManagedReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "copie", fetch = FetchType.EAGER)
     private Collection<Reservation>reservations;
 

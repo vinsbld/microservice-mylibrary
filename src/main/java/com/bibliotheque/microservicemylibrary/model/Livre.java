@@ -21,7 +21,7 @@ public class Livre {
     private String prenomAuteur;
     private Date dateEdition;
 
-    //@JsonManagedReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "livre", fetch = FetchType.EAGER)
     private Collection<Copie>copies;
 
