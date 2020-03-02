@@ -1,5 +1,7 @@
 package com.bibliotheque.microservicemylibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -19,7 +21,8 @@ public class Livre {
     private String prenomAuteur;
     private Date dateEdition;
 
-    @OneToMany(mappedBy = "livre", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "livre", fetch = FetchType.EAGER)
     private Collection<Copie>copies;
 
     public Livre() {

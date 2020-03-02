@@ -1,5 +1,8 @@
 package com.bibliotheque.microservicemylibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
@@ -14,19 +17,17 @@ public class Copie {
     @NotNull
     private Integer nbCopies;
 
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Livre livre;
 
-    @OneToMany(mappedBy = "copie", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "copie", fetch = FetchType.EAGER)
     private Collection<Reservation>reservations;
 
     public Copie() {
-    }
-
-    public Copie(int nbCopies, Livre livre) {
-        this.nbCopies = nbCopies;
-        livre.getId();
     }
 
 

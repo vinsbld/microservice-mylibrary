@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 public class LivreController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -20,13 +21,13 @@ public class LivreController {
     @Autowired
     private LivreDao livreDao;
 
-    @GetMapping("/livres")
+    @GetMapping(value = "/livres")
     public List<Livre> ListeDeLivres(){
 
         return livreDao.findAll();
     }
 
-    @GetMapping("/livre/{id}")
+    @GetMapping(value = "/livre/{id}")
     public Optional<Livre> afficherUnLivre(@PathVariable Long id) {
 
         Optional<Livre> livre = livreDao.findById(id);
